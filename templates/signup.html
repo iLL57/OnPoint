@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% from "bootstrap5/form.html" import render_form %}
+{% extends 'base.html' %}
+
+{% block title %}
+    OnPOINT
+{% endblock %}
+
+{% block content %}
+<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
+    <body>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 col-xl-9 mx-auto">
+            <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+              <div class="card-img-left d-none d-md-flex">
+                <!-- Background image for card set in CSS! -->
+              </div>
+              <div class="card-body p-4 p-sm-5">
+                <h4 class="card-title text-center mb-5 fw-light fs-5">Register</h4>
+                <form method="POST">
+
+                  <div class="form-floating mb-3">
+                    {{ render_form(form, novalidate=TRUE) }}
+                  </div>
+
+                   <a class="d-block text-center mt-2 small" href="{{ url_for('login') }}">Have an account? Sign In</a>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+
+{% endblock %}

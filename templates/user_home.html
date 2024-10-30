@@ -1,0 +1,65 @@
+{% from "bootstrap5/form.html" import render_form %}
+{% extends 'base.html' %}
+
+{% block title %}
+    OnPOINT
+{% endblock %}
+
+{% block content %}
+<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
+    <body>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 col-xl-9 mx-auto">
+            <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+              <div class="card-img-left d-none d-md-flex">
+                <!-- Background image for card set in CSS! -->
+              </div>
+              <div class="card-body p-4 p-sm-5">
+                <h4 class="card-title text-center mb-5 fw-light fs-5">Welcome Back {{ current_user.username }}! </h4>
+                <h5>Your Todo's</h5>
+
+                <!-- Button to add a new to-do item -->
+                  <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+                    <a href="{{ url_for('add_todo') }}" class="btn btn-success">
+                      <i class="fas fa-plus"></i>Add a Todo
+                    </a>
+                  </div>
+                <!-- To-do Items List -->
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                  {% for todo in todos %}
+                  <div class="col">
+                    <div class="card shadow-sm">
+                      <div class="card-body">
+                        <h5 class="card-title">
+                          {{ todo.title }}
+                          {% if todo.completed %}
+                          <span class="badge bg-success ms-2">Completed</span>
+                          {% else %}
+                          <span class="badge bg-warning ms-2">Pending</span>
+                          {% endif %}
+                        </h5>
+                        <p class="card-text">{{ todo.description }}</p>
+                        <p class="card-text">
+                          <small class="text-muted">Due Date: {{ todo.due_date.strftime('%Y-%m-%d') }}</small>
+                        </p>
+                        <div class="d-flex justify-content-between">
+                          <a href="{{ url_for('edit_todo', todo_id=todo.id) }}" class="btn btn-warning btn-sm">
+                            Edit
+                          </a>
+                          <a href="{{ url_for('delete_todo', todo_id=todo.id) }}" class="btn btn-danger btn-sm">
+                            Delete
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+{% endblock %}

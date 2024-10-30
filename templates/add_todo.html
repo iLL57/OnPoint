@@ -16,14 +16,13 @@
                 <!-- Background image for card set in CSS! -->
               </div>
               <div class="card-body p-4 p-sm-5">
-                <h4 class="card-title text-center mb-5 fw-light fs-5">Login</h4>
-                <form method="post">
+                <h4 class="card-title text-center mb-5 fw-light fs-5">Add a Todo</h4>
+                <form method="POST">
+
                   <div class="form-floating mb-3">
-                    {{ render_form(form, novalidate=True) }}
+                    {{ render_form(form, novalidate=TRUE) }}
                   </div>
 
-
-                   <a class="d-block text-center mt-2 small" href="#">Don't have an account? Register Now!</a>
 
                 </form>
               </div>

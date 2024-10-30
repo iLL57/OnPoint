@@ -2,11 +2,10 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    OnPOINT
+    Edit Todo
 {% endblock %}
 
 {% block content %}
-<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
     <body>
       <div class="container">
         <div class="row">
@@ -16,15 +15,18 @@
                 <!-- Background image for card set in CSS! -->
               </div>
               <div class="card-body p-4 p-sm-5">
-                <h4 class="card-title text-center mb-5 fw-light fs-5">Login</h4>
-                <form method="post">
+                <h4 class="card-title text-center mb-5 fw-light fs-5">Edit Todo</h4>
+                <form method="POST">
+                  {{ form.hidden_tag() }}
+
+                  <!-- Render the entire form using render_form for consistency with Bootstrap styling -->
                   <div class="form-floating mb-3">
-                    {{ render_form(form, novalidate=True) }}
+                    {{ render_form(form, novalidate=true) }}
                   </div>
 
-
-                   <a class="d-block text-center mt-2 small" href="#">Don't have an account? Register Now!</a>
-
+                  <!-- Submit and Cancel buttons -->
+                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                  <a href="{{ url_for('user_home') }}" class="btn btn-secondary">Cancel</a>
                 </form>
               </div>
             </div>
@@ -32,5 +34,4 @@
         </div>
       </div>
     </body>
-
 {% endblock %}
